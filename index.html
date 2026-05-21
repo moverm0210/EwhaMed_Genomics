@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Choi Lab | Ewha Womans University</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+/* ─── tokens ─── */
+:root {
+  --navy:   #1a1f3a;
+  --accent: #3d52a0;
+  --muted:  #6b7280;
+  --border: #e5e7eb;
+  --bg:     #fafafa;
+  --white:  #ffffff;
+  --font-sans: 'Pretendard Variable','Pretendard',system-ui,sans-serif;
+  --font-serif:'Crimson Pro',Georgia,serif;
+}
+
+/* ─── reset ─── */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:var(--font-sans);
+  font-size:16px;
+  line-height:1.8;
+  color:#1f2937;
+  background:var(--bg);
+  -webkit-font-smoothing:antialiased;
+}
+a{color:var(--accent);text-decoration:none;}
+a:hover{text-decoration:underline;}
+img{display:block;max-width:100%;}
+
+/* ─── nav ─── */
+nav{
+  position:sticky;top:0;z-index:100;
+  background:var(--white);
+  border-bottom:1px solid var(--border);
+}
+.nav-inner{
+  max-width:860px;margin:0 auto;padding:0 32px;
+  display:flex;align-items:center;justify-content:space-between;
+  height:56px;
+}
+.nav-brand{
+  font-size:17px;font-weight:700;color:var(--navy);
+  letter-spacing:-.02em;
+}
+.nav-brand span{color:var(--accent);}
+.nav-links{display:flex;gap:28px;}
+.nav-links a{
+  font-size:14px;font-weight:500;color:var(--muted);
+  transition:color .15s;
+}
+.nav-links a:hover,.nav-links a.active{color:var(--navy);text-decoration:none;}
+
+/* ─── layout ─── */
+.page{max-width:860px;margin:0 auto;padding:0 32px 80px;}
+
+/* ─── hero / profile ─── */
+.profile{
+  display:grid;
+  grid-template-columns:160px 1fr;
+  gap:40px;
+  align-items:start;
+  padding:60px 0 48px;
+  border-bottom:1px solid var(--border);
+}
+.profile-photo{
+  width:150px;height:150px;border-radius:50%;
+  overflow:hidden;
+  border:3px solid var(--border);
+  background:#e5e7eb;
+  flex-shrink:0;
+}
+.profile-photo img{width:100%;height:100%;object-fit:cover;}
+.profile-info{}
+.profile-name{
+  font-family:var(--font-serif);
+  font-size:34px;font-weight:300;
+  color:var(--navy);letter-spacing:-.01em;
+  margin-bottom:2px;
+}
+.profile-title{
+  font-size:15px;color:var(--muted);
+  margin-bottom:14px;
+  line-height:1.6;
+}
+.profile-bio{
+  font-size:15px;color:#374151;line-height:1.85;
+  margin-bottom:16px;
+}
+.profile-links{display:flex;flex-wrap:wrap;gap:8px;}
+.plink{
+  display:inline-flex;align-items:center;gap:5px;
+  font-size:13px;font-weight:600;
+  color:var(--accent);
+  border:1px solid #c7d0ef;
+  border-radius:4px;padding:4px 11px;
+  transition:all .15s;
+}
+.plink:hover{background:var(--accent);color:#fff;text-decoration:none;border-color:var(--accent);}
+.plink svg{width:13px;height:13px;flex-shrink:0;}
+
+/* ─── sections ─── */
+section{padding:48px 0;border-bottom:1px solid var(--border);}
+section:last-child{border-bottom:none;}
+
+h2{
+  font-family:var(--font-serif);
+  font-size:26px;font-weight:400;
+  color:var(--navy);
+  margin-bottom:24px;
+  letter-spacing:-.01em;
+}
+
+/* ─── news / updates ─── */
+.news-list{list-style:none;display:flex;flex-direction:column;gap:12px;}
+.news-item{display:grid;grid-template-columns:88px 1fr;gap:16px;font-size:15px;}
+.news-date{color:var(--muted);font-size:13.5px;padding-top:1px;white-space:nowrap;font-weight:500;}
+.news-text{color:#374151;line-height:1.7;}
+.news-text strong{color:var(--navy);}
+.tag{
+  display:inline-block;font-size:11px;font-weight:700;
+  padding:1px 7px;border-radius:3px;
+  vertical-align:middle;margin-right:4px;
+  letter-spacing:.03em;
+}
+.tag-pub{background:#dbeafe;color:#1e40af;}
+.tag-grant{background:#dcfce7;color:#15803d;}
+.tag-new{background:#fef9c3;color:#92400e;}
+.tag-join{background:#f3e8ff;color:#6b21a8;}
+
+/* ─── research ─── */
+.research-list{list-style:none;display:flex;flex-direction:column;gap:20px;}
+.research-item{display:grid;grid-template-columns:32px 1fr;gap:14px;align-items:start;}
+.research-num{
+  font-family:var(--font-serif);font-size:22px;font-weight:300;
+  color:#d1d5db;line-height:1.2;padding-top:2px;
+}
+.research-body h3{font-size:15.5px;font-weight:700;color:var(--navy);margin-bottom:4px;}
+.research-body p{font-size:14.5px;color:#4b5563;line-height:1.75;}
+.kw{
+  display:inline-block;font-size:12px;color:var(--muted);
+  background:#f3f4f6;border-radius:3px;padding:1px 7px;
+  margin:4px 3px 0 0;
+}
+
+/* ─── publications ─── */
+.pub-list{list-style:none;display:flex;flex-direction:column;gap:18px;}
+.pub-item{
+  padding-left:14px;border-left:3px solid #e5e7eb;
+  transition:border-color .2s;
+}
+.pub-item:hover{border-left-color:var(--accent);}
+.pub-title{font-size:15px;font-weight:600;color:#111827;line-height:1.5;margin-bottom:3px;}
+.pub-authors{font-size:13.5px;color:var(--muted);margin-bottom:2px;}
+.pub-authors strong{color:#374151;font-weight:600;}
+.pub-venue{font-size:13.5px;color:var(--muted);}
+.pub-venue em{font-style:italic;color:#374151;}
+.pub-year{
+  display:inline-block;font-size:11px;font-weight:700;
+  background:#f3f4f6;color:var(--muted);
+  border-radius:3px;padding:1px 7px;margin-left:6px;
+  vertical-align:middle;
+}
+
+/* ─── people ─── */
+.people-section{margin-bottom:32px;}
+.people-label{
+  font-size:11.5px;font-weight:700;letter-spacing:.1em;
+  color:var(--muted);text-transform:uppercase;
+  margin-bottom:14px;
+  padding-bottom:6px;border-bottom:1px solid var(--border);
+}
+.people-grid{display:flex;flex-direction:column;gap:10px;}
+.person{
+  display:grid;grid-template-columns:130px 1fr;
+  gap:8px;font-size:14.5px;align-items:baseline;
+}
+.person-name{font-weight:700;color:var(--navy);}
+.person-info{color:#4b5563;font-size:14px;}
+.person-info .role{color:var(--muted);font-size:13px;}
+
+/* ─── grants ─── */
+.grant-list{list-style:none;display:flex;flex-direction:column;gap:14px;}
+.grant-item{
+  display:grid;grid-template-columns:1fr 80px;
+  gap:12px;align-items:start;
+  padding:14px 16px;
+  background:var(--white);border:1px solid var(--border);border-radius:6px;
+}
+.grant-title{font-size:15px;font-weight:700;color:var(--navy);margin-bottom:2px;}
+.grant-meta{font-size:13.5px;color:var(--muted);}
+.grant-status{
+  font-size:12px;font-weight:700;text-align:center;
+  padding:4px 0;border-radius:4px;
+  align-self:start;
+}
+.gs-on{background:#dcfce7;color:#15803d;}
+.gs-done{background:#f3f4f6;color:#9ca3af;}
+
+/* ─── teaching ─── */
+.course-list{list-style:none;display:flex;flex-direction:column;gap:0;}
+.course-item{
+  display:grid;grid-template-columns:1fr auto;
+  gap:12px;align-items:baseline;
+  padding:10px 0;border-bottom:1px dashed var(--border);
+  font-size:14.5px;
+}
+.course-name{color:#1f2937;}
+.course-name span{font-weight:600;color:var(--navy);}
+.course-meta{font-size:13px;color:var(--muted);text-align:right;white-space:nowrap;}
+
+/* ─── contact ─── */
+.contact-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:10px 32px;font-size:14.5px;
+}
+.ci{display:flex;gap:10px;}
+.ci .lbl{font-weight:700;color:var(--navy);min-width:56px;flex-shrink:0;font-size:13.5px;}
+.ci .val{color:#374151;}
+.ci .val a{color:var(--accent);}
+
+/* ─── footer ─── */
+footer{
+  border-top:1px solid var(--border);
+  padding:28px 0;text-align:center;
+  font-size:13px;color:var(--muted);
+  max-width:860px;margin:0 auto;padding:28px 32px;
+}
+
+/* ─── responsive ─── */
+@media(max-width:640px){
+  .profile{grid-template-columns:1fr;gap:20px;}
+  .profile-photo{width:110px;height:110px;}
+  .profile-name{font-size:26px;}
+  .nav-links{gap:16px;}
+  .contact-grid{grid-template-columns:1fr;}
+  .grant-item{grid-template-columns:1fr;}
+  .person{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-brand">Choi <span>Lab</span></div>
+    <div class="nav-links">
+      <a href="#research" class="active">Research</a>
+      <a href="#publications">Publications</a>
+      <a href="#people">People</a>
+      <a href="#teaching">Teaching</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<div class="page">
+
+  <!-- PROFILE -->
+  <div class="profile">
+    <div class="profile-photo">
+      <img src="https://eureka.ewha.ac.kr/eureka/my/cmmFileDownController.do?bizFileId=20231207ZUSSVWLDQJAU&fileId=1"
+           alt="Jisu Choi"
+           onerror="this.parentNode.style.background='#dde1ee'">
+    </div>
+    <div class="profile-info">
+      <div class="profile-name">최지수  Jisu Choi</div>
+      <div class="profile-title">
+        조교수 (Assistant Professor) · 주임교수<br>
+        이화여자대학교 의과대학 · 시스템헬스융합전공<br>
+        유전체의학연구실 / Laboratory of Genomic Medicine
+      </div>
+      <div class="profile-bio">
+        단일세포 유전체학과 다중오믹스 분석을 통해 질환 세포의 분자 기전을 규명합니다.
+        줄기세포·면역세포·종양 미세환경의 유전체 기반을 탐구하여 정밀의학의 새로운 지평을 열어갑니다.
+      </div>
+      <div class="profile-links">
+        <a class="plink" href="https://scholar.google.com/citations?user=aCF4s9AAAAAJ&hl=en" target="_blank">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/></svg>
+          Google Scholar
+        </a>
+        <a class="plink" href="https://www.ewha.ac.kr/ewha/academics/medicine-prof.do?mode=view&pId=rTcSoYE4wr1n7hP%2FLDwQRQ%3D%3D" target="_blank">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2z"/><path d="M12 6v6l4 2"/></svg>
+          Ewha Faculty Page
+        </a>
+        <a class="plink" href="mailto:moverm0210@ewha.ac.kr">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          moverm0210@ewha.ac.kr
+        </a>
+        <a class="plink" href="tel:02-6986-6307">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.5 2 2 0 0 1 3.6 1.32h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6.06 6.06l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          02-6986-6307
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- NEWS -->
+  <section id="news">
+    <h2>News</h2>
+    <ul class="news-list">
+      <li class="news-item">
+        <span class="news-date">2026. 01</span>
+        <span class="news-text"><span class="tag tag-pub">Paper</span>
+          <strong>IJBS</strong>에 폐암 미세환경 논문 게재 — WISP-1-Integrin α5β3-STAT1 신호전달 연구</span>
+      </li>
+      <li class="news-item">
+        <span class="news-date">2025. 09</span>
+        <span class="news-text"><span class="tag tag-pub">Paper</span>
+          <em>Cell Communication and Signaling</em>에 폐암 CAF 논문 게재</span>
+      </li>
+      <li class="news-item">
+        <span class="news-date">2025</span>
+        <span class="news-text"><span class="tag tag-grant">Grant</span>
+          한국연구재단 <strong>기초연구실 지원사업</strong> 선정</span>
+      </li>
+      <li class="news-item">
+        <span class="news-date">2024</span>
+        <span class="news-text"><span class="tag tag-grant">Grant</span>
+          한국연구재단 <strong>우수신진연구 씨앗과제</strong> 선정</span>
+      </li>
+      <li class="news-item">
+        <span class="news-date">2024. 01</span>
+        <span class="news-text"><span class="tag tag-pub">Paper</span>
+          <em>Experimental &amp; Molecular Medicine</em>에 전립선 공간유전체 논문 게재</span>
+      </li>
+      <li class="news-item">
+        <span class="news-date">2023. 09</span>
+        <span class="news-text"><span class="tag tag-new">New</span>
+          이화여자대학교 의과대학 조교수로 부임, 유전체의학연구실 개설</span>
+      </li>
+    </ul>
+  </section>
+
+  <!-- RESEARCH -->
+  <section id="research">
+    <h2>Research</h2>
+    <ul class="research-list">
+      <li class="research-item">
+        <div class="research-num">01</div>
+        <div class="research-body">
+          <h3>단일세포 유전체학 · Single-Cell Genomics</h3>
+          <p>scRNA-seq, scATAC-seq, Spatial transcriptomics를 활용하여 세포 수준의 전사체 및 후성유전체 이질성을 분석합니다. 종양 미세환경 내 세포 구성과 상호작용 네트워크를 해독합니다.</p>
+          <div><span class="kw">scRNA-seq</span><span class="kw">scATAC-seq</span><span class="kw">Spatial Transcriptomics</span><span class="kw">UMAP</span></div>
+        </div>
+      </li>
+      <li class="research-item">
+        <div class="research-num">02</div>
+        <div class="research-body">
+          <h3>면역·줄기세포 유전체학 · Immune &amp; Stem Cell Genomics</h3>
+          <p>T세포·B세포·NK세포·대식세포 등 면역세포 아형별 유전자 발현 및 분화 경로를 분석합니다. 줄기세포 자기재생과 분화 조절의 유전체·후성유전체 기전을 연구합니다.</p>
+          <div><span class="kw">Tumor Microenvironment</span><span class="kw">Immune Cell</span><span class="kw">Stem Cell</span><span class="kw">Epigenomics</span></div>
+        </div>
+      </li>
+      <li class="research-item">
+        <div class="research-num">03</div>
+        <div class="research-body">
+          <h3>질환 유전체학 · Disease Genomics</h3>
+          <p>WGS/WES 기반 암 및 희귀 유전질환 관련 체세포·생식세포 변이를 발굴하고 병인 분자기전을 규명합니다. 다중오믹스 통합으로 진단 바이오마커를 개발합니다.</p>
+          <div><span class="kw">WGS/WES</span><span class="kw">Somatic Mutation</span><span class="kw">Multi-omics</span><span class="kw">Biomarker</span></div>
+        </div>
+      </li>
+      <li class="research-item">
+        <div class="research-num">04</div>
+        <div class="research-body">
+          <h3>생물정보학 · Bioinformatics</h3>
+          <p>대용량 유전체 데이터 분석 파이프라인을 개발합니다. AI/ML 기반 변이 해석 알고리즘과 시각화 도구를 연구하여 정밀의학 임상 적용을 가속합니다.</p>
+          <div><span class="kw">Pipeline Development</span><span class="kw">Machine Learning</span><span class="kw">Variant Calling</span><span class="kw">Precision Medicine</span></div>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <!-- PUBLICATIONS -->
+  <section id="publications">
+    <h2>Publications</h2>
+    <p style="font-size:14px;color:var(--muted);margin-bottom:20px;">
+      전체 논문 목록:
+      <a href="https://scholar.google.com/citations?user=aCF4s9AAAAAJ&hl=en" target="_blank">Google Scholar</a>
+    </p>
+    <ul class="pub-list">
+
+      <li class="pub-item">
+        <div class="pub-title">Apoptotic Cancer Cell-Primed Cancer-Associated Fibroblasts Suppress Immunosuppressive Macrophages via WISP-1-Integrin α5β3-STAT1 Signaling in Lung Cancer</div>
+        <div class="pub-authors">authors · <strong>Choi JS</strong> et al.</div>
+        <div class="pub-venue"><em>International Journal of Biological Sciences</em>, v.22 no.2, 995–1015<span class="pub-year">2026</span></div>
+      </li>
+
+      <li class="pub-item">
+        <div class="pub-title">The interplay of cancer-associated fibroblasts and apoptotic cancer cells suppresses lung cancer cell growth through WISP-1-integrin ανβ3-STAT1 signaling pathway</div>
+        <div class="pub-authors">authors · <strong>Choi JS</strong> et al.</div>
+        <div class="pub-venue"><em>Cell Communication and Signaling</em>, v.23 no.1, 98<span class="pub-year">2025</span></div>
+      </li>
+
+      <li class="pub-item">
+        <div class="pub-title">Spatial architectures of somatic mutations in normal prostate, benign prostatic hyperplasia and coexisting prostate cancer</div>
+        <div class="pub-authors"><strong>Choi JS</strong> et al.</div>
+        <div class="pub-venue"><em>Experimental and Molecular Medicine</em>, v.56 no.1, 168–176 · SCIE · Scopus · KCI<span class="pub-year">2024</span></div>
+      </li>
+
+      <li class="pub-item">
+        <div class="pub-title">An integrative approach for exploring the nature of fibroepithelial neoplasms</div>
+        <div class="pub-authors"><strong>Choi JS</strong> et al.</div>
+        <div class="pub-venue"><em>British Journal of Cancer</em>, v.128 no.4, 626–637 · SCIE<span class="pub-year">2023</span></div>
+      </li>
+
+      <li class="pub-item">
+        <div class="pub-title">Comprehensive Molecular Characterization of Adenocarcinoma of the Gastroesophageal Junction Between Esophageal and Gastric Adenocarcinomas</div>
+        <div class="pub-authors"><strong>Choi JS</strong> et al.</div>
+        <div class="pub-venue"><em>Annals of Surgery</em>, v.275 no.4, 706–717 · SCIE<span class="pub-year">2022</span></div>
+      </li>
+
+      <li class="pub-item">
+        <div class="pub-title">Predictive biomarkers for 5-fluorouracil and oxaliplatin-based chemotherapy in gastric cancers via profiling of patient-derived xenografts</div>
+        <div class="pub-authors"><strong>Choi JS</strong> et al.</div>
+        <div class="pub-venue"><em>Nature Communications</em>, v.12 no.1, 4840 · SCIE<span class="pub-year">2021</span></div>
+      </li>
+
+    </ul>
+  </section>
+
+  <!-- PEOPLE -->
+  <section id="people">
+    <h2>People</h2>
+
+    <div class="people-section">
+      <div class="people-label">Principal Investigator</div>
+      <div class="people-grid">
+        <div class="person">
+          <div class="person-name">최지수 Jisu Choi</div>
+          <div class="person-info">조교수 · 서울대학교 의학박사 (의과학과) <span class="role">/ 국립암센터, 가톨릭대 성의교정 역임</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="people-section">
+      <div class="people-label">조교 · Staff</div>
+      <div class="people-grid">
+        <div class="person">
+          <div class="person-name">임효민</div>
+          <div class="person-info">조교</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="people-section">
+      <div class="people-label">대학원생 · Graduate Students</div>
+      <div class="people-grid">
+        <div class="person">
+          <div class="person-name">정주현</div>
+          <div class="person-info">통합과정 1학기</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="people-section">
+      <div class="people-label">인턴 (재학) · Interns (Current Students)</div>
+      <div class="people-grid">
+        <div class="person">
+          <div class="person-name">편재영</div>
+          <div class="person-info">의학과 재학</div>
+        </div>
+        <div class="person">
+          <div class="person-name">오서연</div>
+          <div class="person-info">의학과 재학</div>
+        </div>
+        <div class="person">
+          <div class="person-name">미확인</div>
+          <div class="person-info">의학과 재학 <span class="role">(이름 업데이트 필요)</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="people-section">
+      <div class="people-label">인턴 (졸업/예정) · Interns (Graduates)</div>
+      <div class="people-grid">
+        <div class="person">
+          <div class="person-name">백서영</div>
+          <div class="person-info">석사 졸업</div>
+        </div>
+        <div class="person">
+          <div class="person-name">황선영</div>
+          <div class="person-info">학사 졸업예정</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="people-section">
+      <div class="people-label">Alumni</div>
+      <div class="people-grid">
+        <div class="person">
+          <div class="person-name">염윤지</div>
+          <div class="person-info">박사과정</div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- GRANTS -->
+  <section id="grants">
+    <h2>Grants</h2>
+    <ul class="grant-list">
+      <li class="grant-item">
+        <div>
+          <div class="grant-title">기초연구실 지원사업</div>
+          <div class="grant-meta">한국연구재단 · 단일세포 분석 기반 질환 유전체 연구</div>
+        </div>
+        <div class="grant-status gs-on">진행 중</div>
+      </li>
+      <li class="grant-item">
+        <div>
+          <div class="grant-title">우수신진연구 씨앗과제</div>
+          <div class="grant-meta">한국연구재단 · 신진 연구자 기초과학 연구 지원</div>
+        </div>
+        <div class="grant-status gs-on">진행 중</div>
+      </li>
+      <li class="grant-item">
+        <div>
+          <div class="grant-title">브릿지사업</div>
+          <div class="grant-meta">이화여자대학교 교내과제</div>
+        </div>
+        <div class="grant-status gs-done">완료</div>
+      </li>
+      <li class="grant-item">
+        <div>
+          <div class="grant-title">공동과제육성사업</div>
+          <div class="grant-meta">이화여자대학교 교내과제</div>
+        </div>
+        <div class="grant-status gs-done">완료</div>
+      </li>
+    </ul>
+  </section>
+
+  <!-- TEACHING -->
+  <section id="teaching">
+    <h2>Teaching</h2>
+    <p style="font-size:14px;color:var(--muted);margin-bottom:18px;">2026년 1학기 기준</p>
+    <ul class="course-list">
+      <li class="course-item">
+        <div class="course-name"><span>분자세포생물학Ⅰ</span> — 의예과 2학년</div>
+        <div class="course-meta">전공필수 · 3학점</div>
+      </li>
+      <li class="course-item">
+        <div class="course-name"><span>의학총론</span> — 의학과 1학년</div>
+        <div class="course-meta">전공필수 · 2.5학점</div>
+      </li>
+      <li class="course-item">
+        <div class="course-name"><span>대사와 영양</span> — 의학과 1학년</div>
+        <div class="course-meta">전공필수 · 2.5학점</div>
+      </li>
+      <li class="course-item">
+        <div class="course-name"><span>인체유전학</span> — 대학원</div>
+        <div class="course-meta">3학점</div>
+      </li>
+      <li class="course-item">
+        <div class="course-name"><span>신경생물학의 최신지견</span> — 대학원</div>
+        <div class="course-meta">3학점</div>
+      </li>
+      <li class="course-item">
+        <div class="course-name"><span>시스템헬스개론</span> — 대학원</div>
+        <div class="course-meta">3학점</div>
+      </li>
+      <li class="course-item">
+        <div class="course-name"><span>분자생물학 및 분자유전학</span> — 대학원</div>
+        <div class="course-meta">3학점</div>
+      </li>
+      <li class="course-item">
+        <div class="course-name"><span>고급분자유전학</span> — 대학원</div>
+        <div class="course-meta">3학점</div>
+      </li>
+      <li class="course-item">
+        <div class="course-name"><span>생화학세미나Ⅰ·Ⅱ</span> — 대학원</div>
+        <div class="course-meta">3학점</div>
+      </li>
+    </ul>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <h2>Contact</h2>
+    <div class="contact-grid">
+      <div class="ci"><span class="lbl">이메일</span><span class="val"><a href="mailto:moverm0210@ewha.ac.kr">moverm0210@ewha.ac.kr</a></span></div>
+      <div class="ci"><span class="lbl">전화</span><span class="val"><a href="tel:02-6986-6307">02-6986-6307</a></span></div>
+      <div class="ci"><span class="lbl">위치</span><span class="val">의학관(마곡) 512호</span></div>
+      <div class="ci"><span class="lbl">팩스</span><span class="val">02-6986-7016</span></div>
+      <div class="ci"><span class="lbl">주소</span><span class="val">서울특별시 강서구 마곡동로2길 25<br>이화여자대학교 의과대학</span></div>
+    </div>
+  </section>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2024 Laboratory of Genomic Medicine · Ewha Womans University College of Medicine</p>
+  <p style="margin-top:4px;">
+    <a href="https://www.ewhamed.ac.kr" target="_blank">이화여대 의과대학</a> ·
+    <a href="https://scholar.google.com/citations?user=aCF4s9AAAAAJ&hl=en" target="_blank">Google Scholar</a>
+  </p>
+</footer>
+
+<script>
+// active nav on scroll
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll', () => {
+  let cur = '';
+  sections.forEach(s => {
+    if (window.scrollY >= s.offsetTop - 80) cur = s.id;
+  });
+  navLinks.forEach(a => {
+    a.classList.toggle('active', a.getAttribute('href') === '#' + cur);
+  });
+});
+</script>
+</body>
+</html>
