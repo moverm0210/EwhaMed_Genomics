@@ -33,12 +33,12 @@
 
 ## Recent Publications
 
-- **Chae JS** et al. Apoptotic Cancer Cell-Primed Cancer-Associated Fibroblasts Suppress Immunosuppressive Macrophages via WISP-1-Integrin α5β3-STAT1 Signaling in Lung Cancer. *Int J Biol Sci* 2026.
-- **Chae JS** et al. The interplay of cancer-associated fibroblasts and apoptotic cancer cells suppresses lung cancer cell growth through WISP-1-integrin ανβ3-STAT1 signaling pathway. *Cell Commun Signal* 2025.
-- **Chae JS** et al. Spatial architectures of somatic mutations in normal prostate, benign prostatic hyperplasia and coexisting prostate cancer. *Exp Mol Med* 2024.
-- **Chae JS** et al. An integrative approach for exploring the nature of fibroepithelial neoplasms. *Br J Cancer* 2023.
-- **Chae JS** et al. Comprehensive Molecular Characterization of Adenocarcinoma of the Gastroesophageal Junction. *Ann Surg* 2022.
-- **Chae JS** et al. Predictive biomarkers for 5-FU and oxaliplatin-based chemotherapy in gastric cancers via profiling of patient-derived xenografts. *Nat Commun* 2021.
+- Apoptotic Cancer Cell-Primed Cancer-Associated Fibroblasts Suppress Immunosuppressive Macrophages via WISP-1-Integrin α5β3-STAT1 Signaling in Lung Cancer. *Int J Biol Sci* 2026.
+- The interplay of cancer-associated fibroblasts and apoptotic cancer cells suppresses lung cancer cell growth through WISP-1-integrin ανβ3-STAT1 signaling pathway. *Cell Commun Signal* 2025.
+- Spatial architectures of somatic mutations in normal prostate, benign prostatic hyperplasia and coexisting prostate cancer. *Exp Mol Med* 2024.
+- An integrative approach for exploring the nature of fibroepithelial neoplasms. *Br J Cancer* 2023.
+- Comprehensive Molecular Characterization of Adenocarcinoma of the Gastroesophageal Junction. *Ann Surg* 2022.
+- Predictive biomarkers for 5-FU and oxaliplatin-based chemotherapy in gastric cancers via profiling of patient-derived xenografts. *Nat Commun* 2021.
 
 → 전체 목록: [Google Scholar](https://scholar.google.com/citations?user=aCF4s9AAAAAJ&hl=en)
 
