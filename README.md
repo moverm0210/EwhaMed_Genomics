@@ -15,7 +15,7 @@
 의학관(마곡) 512호
 
 📧 moverm0210 @ ewha.ac.kr  
-📞 02-6986-6307  
+ 
 🔗 [Google Scholar](https://scholar.google.com/citations?user=aCF4s9AAAAAJ&hl=en) · [이화여대 교수 페이지](https://www.ewha.ac.kr/ewha/academics/medicine-prof.do?mode=view&pId=rTcSoYE4wr1n7hP%2FLDwQRQ%3D%3D)
 
 ---
